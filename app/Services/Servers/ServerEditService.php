@@ -120,9 +120,9 @@ class ServerEditService
         $user = $request->user();
     
         // Check that the server's limits are acceptable.
-        if ($resource == 'cpu' && $server->cpu <= 50 && $amount < 0) throw new DisplayException('Cannot have less than 50% CPU assigned to server.');
-        if ($resource == 'memory' && $server->memory <= 1024 && $amount < 0) throw new DisplayException('Cannot have less than 1GB RAM assigned to server.');
-        if ($resource == 'disk' && $server->disk <= 1024 && $amount < 0) throw new DisplayException('Cannot have less than 1GB RAM assigned to server.');
+        if ($resource == 'cpu' && $server->cpu <= 25 && $amount < 0) throw new DisplayException('Cannot have less than 50% CPU assigned to server.');
+        if ($resource == 'memory' && $server->memory <= 150 && $amount < 0) throw new DisplayException('Cannot have less than 1GB RAM assigned to server.');
+        if ($resource == 'disk' && $server->disk <= 512 && $amount < 0) throw new DisplayException('Cannot have less than 1GB RAM assigned to server.');
 
         if ($resource == 'allocation_limit' && $server->allocation_limit <= 1 && $amount < 0) throw new DisplayException('Cannot have less than 1 network allocation assigned to server.');
         if ($resource == 'backup_limit' && $server->backup_limit <= 0 && $amount < 0) throw new DisplayException('Cannot have less than 0 backup slots assigned to server.');
